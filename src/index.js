@@ -39,16 +39,15 @@ function fetchPics() {
 
   let dropDownButton = document.getElementById("breed-dropdown");
   let optionArr;
-  dropDownButton.addEventListener("click", (event) => {
-    optionArr = event.target.children;
-    console.log(optionArr);
-    for (let i = 0; i < optionArr.length; i++) {
-      let option = optionArr[i];
-      console.log(option);
-      option.addEventListener("click", () => {
-        alert("clicked");
-      });
-    }
+  dropDownButton.addEventListener("change", (event) => {
+    let alphabet = event.target.value;
+    let dogBreedContainer = document.getElementById("dog-breeds");
+    dogBreedContainer.textContent = "";
+    let newBreedArray = breedsData.filter((item) => {
+      return item.charAt(0) === alphabet;
+    });
+    console.log(newBreedArray);
+
     // for (let option of optionArr) {
     //   option.addEventListener("click", (event) => {
     //     console.log(event);
